@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+body {
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
+}
+body .container {
+  background-color: #faf9f9;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .container .container-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #FFFFFE;
+  box-shadow: 0px 0px 3px rgba(156, 156, 156, 0.342);
+  border-radius: 15px;
+  height: 80%;
+  width: 25%;
+}
+body .container .container-login .container-login-titulo {
+  font-size: 40px;
+  margin: 0 0 40px 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+body .container .container-login .container-input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+body .container .container-login .container-input .container-email,
+body .container .container-login .container-input .container-password, body .container .container-login .container-input .container-nome, body .container .container-login .container-input .container-cpf {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+body .container .container-login .container-input .container-email input,
+body .container .container-login .container-input .container-password input, body .container .container-login .container-input .container-nome input, body .container .container-login .container-input .container-cpf input {
+  width: 70%;
+  height: 40px;
+  border: 1px solid rgba(165, 165, 165, 0.473);
+  border-radius: 15px;
+  font-size: 16px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: "Noto Sans", sans-serif;
+}
+body .container .container-login .container-input .container-email input:focus,
+body .container .container-login .container-input .container-password input:focus, body .container .container-login .container-input .container-nome input:focus, body .container .container-login .container-input .container-cpf input:focus {
+  outline: none;
+  border-color: rgba(165, 165, 165, 0.473);
+  box-shadow: none;
+}
+body .container .container-login .container-input .container-email p,
+body .container .container-login .container-input .container-password p, body .container .container-login .container-input .container-nome p, body .container .container-login .container-input .container-cpf p {
+  margin: 0 0 5px 0;
+  font-size: 22px;
+}
+body .container .container-login .container-input .container-email .container-email-nome,
+body .container .container-login .container-input .container-email .senhas,
+body .container .container-login .container-input .container-password .container-email-nome,
+body .container .container-login .container-input .container-password .senhas, body .container .container-login .container-input .container-nome .container-email-nome,
+body .container .container-login .container-input .container-nome .senhas, body .container .container-login .container-input .container-cpf .container-email-nome,
+body .container .container-login .container-input .container-cpf .senhas {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 80px;
+}
+body .container .container-login .container-input .container-email .senhas,
+body .container .container-login .container-input .container-password .senhas, body .container .container-login .container-input .container-nome .senhas, body .container .container-login .container-input .container-cpf .senhas {
+  gap: 31%;
+}
+body .container .container-login .container-input .container-email .senhas a,
+body .container .container-login .container-input .container-password .senhas a, body .container .container-login .container-input .container-nome .senhas a, body .container .container-login .container-input .container-cpf .senhas a {
+  font-size: 16px;
+  color: #3462D8;
+  text-decoration: underline;
+}
+body .container .container-login .container-input .container-password {
+  margin-bottom: 60px;
+}
+body .container .container-login .container-foot {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+body .container .container-login .container-foot button {
+  width: 180px;
+  height: 50px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3562D7;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  font-family: "Noto Sans", sans-serif;
+  margin-bottom: 10px;
+}
+body .container .container-login .container-foot p {
+  font-size: 14px;
+  margin: 0;
+  color: black;
+  text-align: end;
+}
+body .container .container-login .container-foot a {
+  color: #3462D8;
+  font-size: 16px;
+}/*# sourceMappingURL=cadastro.css.map */
