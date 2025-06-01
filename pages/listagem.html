@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/img/um-desenho-qualquer-2.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/listagem/listagem.css">
+    <title>Listagem</title>
+</head>
+<body>
+    <div class="container">
+        <div class="container-listagem">
+            <h2 class="container-listagem-titulo">LISTAGEM</h2>
+
+            <div class="container-lista">
+                <div class="container-pesquisa">
+                    <input type="text" id="inputPesquisa" placeholder="Pesquisar por nome ou email...">
+                    <button id="btnPesquisar">Buscar</button>
+                    <button id="btnListar">Listar</button>
+                </div>
+
+
+                <div class="container-contas">
+                    <div class="container-titulos">
+                        <div class="nome-container"><h3>Nome</h3></div>
+                        <div class="email-container"><h3>Email</h3></div>
+                        <div class="cpf-container"><h3>CPF</h3></div>
+                        <div class="senha-container"><h3>Senha</h3></div>
+                        <div class="data-container"><h3>Data</h3></div>
+                        <div class="acoes-container"><h3>Ações</h3></div>
+                    </div>
+                    
+                    <div class="dados-contas">
+                        <div class="linha" id="linha-1">
+                            <div class="nomes">
+                               <p class="listagem-nomes" id="nome-listagem-1"></p>
+                            </div>
+
+                            <div class="email">
+                                <p class="listagem-nomes" id="email-listagem-1"></p>
+                            </div>
+
+                            <div class="cpf">
+                                <p class="listagem-nomes"  id="cpf-listagem-1"></p>
+                            </div>
+
+                            <div class="senha">
+                                <p class="listagem-nomes"  id="senha-listagem-1"></p>
+                            </div>
+
+                            <div class="data">
+                                <p class="listagem-nomes"  id="data-listagem-1"></p>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                   
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="../assets/js/listagem.js"></script>
+</body>
+</html>

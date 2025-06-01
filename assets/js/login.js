@@ -42,10 +42,12 @@ document.addEventListener("DOMContentLoaded", () => {
     msgDiv.innerHTML = "Login realizado com sucesso!";
     msgDiv.classList.add("sucesso");
 
+    // Salva o usuário logado no localStorage
     localStorage.setItem("loggedInUser", JSON.stringify(user));
 
+    // Redireciona para a página de perfil após 1.5s
     setTimeout(() => {
-      window.location.href = "perfil.html";
+    window.location.href = "./perfil.html";
     }, 1500);
   });
 });

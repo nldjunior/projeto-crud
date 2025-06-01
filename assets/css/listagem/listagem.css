@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+body {
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
+}
+body .container {
+  background-color: #faf9f9;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .container .container-listagem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #FFFFFE;
+  box-shadow: 0px 0px 3px rgba(156, 156, 156, 0.342);
+  border-radius: 15px;
+  height: 80%;
+  width: 50%;
+}
+body .container .container-listagem .container-listagem-titulo {
+  margin: 0;
+  font-size: 40px;
+}
+body .container .container-listagem .container-lista {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+body .container .container-listagem .container-lista .container-pesquisa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+body .container .container-listagem .container-lista .container-pesquisa button {
+  width: 100px;
+  height: 40px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3562D7;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  font-family: "Noto Sans", sans-serif;
+  margin-left: 20px;
+}
+body .container .container-listagem .container-lista .container-pesquisa input {
+  width: 70%;
+  height: 40px;
+  border: 1px solid rgba(165, 165, 165, 0.473);
+  border-radius: 15px;
+  font-size: 16px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: "Noto Sans", sans-serif;
+}
+body .container .container-listagem .container-lista .container-pesquisa input:focus {
+  outline: none;
+  border-color: rgba(165, 165, 165, 0.473);
+  box-shadow: none;
+}
+body .container .container-listagem .container-lista .container-contas {
+  width: 91%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+}
+body .container .container-listagem .container-lista .container-contas .container-titulos {
+  border-radius: 20px;
+  padding: 10px;
+  border: 2px solid #3562D7;
+  display: flex;
+  gap: 60px;
+  width: 90%;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+}
+body .container .container-listagem .container-lista .container-contas .container-titulos .nome-container, body .container .container-listagem .container-lista .container-contas .container-titulos .email-container, body .container .container-listagem .container-lista .container-contas .container-titulos .cpf-container, body .container .container-listagem .container-lista .container-contas .container-titulos .senha-container, body .container .container-listagem .container-lista .container-contas .container-titulos .data-container {
+  width: 20%;
+  text-align: center;
+}
+body .container .container-listagem .container-lista .container-contas .container-titulos h3 {
+  margin: 0;
+}
+body .container .container-listagem .container-lista .container-contas .dados-contas {
+  width: 100%;
+  margin: 0;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  overflow: hidden;
+}
+body .container .container-listagem .container-lista .container-contas .dados-contas .linha {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 20%;
+  width: 100%;
+}
+body .container .container-listagem .container-lista .container-contas .dados-contas .acoes {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+body .container .container-listagem .container-lista .container-contas .dados-contas .acoes button {
+  background-color: #3562D7;
+  border: none;
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  color: white;
+}
+body .container .container-listagem .container-lista .container-contas .dados-contas .acoes-container {
+  width: auto;
+}
+body .container .container-listagem .container-lista .container-contas .dados-contas .nomes, body .container .container-listagem .container-lista .container-contas .dados-contas .email, body .container .container-listagem .container-lista .container-contas .dados-contas .cpf, body .container .container-listagem .container-lista .container-contas .dados-contas .senha, body .container .container-listagem .container-lista .container-contas .dados-contas .data {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+body .container .container-listagem .container-lista .container-contas .dados-contas .nomes .listagem-nomes, body .container .container-listagem .container-lista .container-contas .dados-contas .email .listagem-nomes, body .container .container-listagem .container-lista .container-contas .dados-contas .cpf .listagem-nomes, body .container .container-listagem .container-lista .container-contas .dados-contas .senha .listagem-nomes, body .container .container-listagem .container-lista .container-contas .dados-contas .data .listagem-nomes {
+  max-width: 100%;
+  text-align: center;
+  margin: 0;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+body .container .container-listagem .container-lista .container-contas .dados-contas .nomes .conta, body .container .container-listagem .container-lista .container-contas .dados-contas .email .conta, body .container .container-listagem .container-lista .container-contas .dados-contas .cpf .conta, body .container .container-listagem .container-lista .container-contas .dados-contas .senha .conta, body .container .container-listagem .container-lista .container-contas .dados-contas .data .conta {
+  max-width: 100%;
+  height: 100%;
+}/*# sourceMappingURL=listagem.css.map */

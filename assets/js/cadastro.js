@@ -1,25 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".container-input");
+  const cpfInput = form.cpf;
 
-  // Cria container para mensagens de erro e sucesso
   const msgDiv = document.createElement("div");
   msgDiv.classList.add("mensagens");
-  form.prepend(msgDiv); // adiciona no topo do formulário
+  form.prepend(msgDiv);
+
+  cpfInput.addEventListener("input", (e) => {
+    let valor = e.target.value.replace(/\D/g, "");
+    if (valor.length > 11) valor = valor.slice(0, 11);
+    valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+    valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
+    valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+    e.target.value = valor;
+  });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // Captura os dados
     const nome = form.nome.value.trim();
     const email = form.email.value.trim();
-    const cpf = form.cpf.value.trim();
+    const cpf = cpfInput.value;
     const senha = form.senha.value;
 
-    // Limpa mensagens
     msgDiv.innerHTML = "";
     msgDiv.className = "mensagens";
 
-    // Validações
     const erros = [];
 
     if (!nome || !email || !cpf || !senha) {
@@ -34,7 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
       erros.push("CPF inválido.");
     }
 
-    // Verifica duplicidade
+    if (!validarSenha(senha)) {
+      erros.push("A senha deve ter pelo menos 6 caracteres.");
+    }
+
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     const existeEmail = usuarios.some(u => u.email === email);
     const existeCPF = usuarios.some(u => u.cpf === cpf);
@@ -47,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Cria objeto do usuário
     const novoUsuario = {
       nome,
       email,
@@ -56,22 +64,19 @@ document.addEventListener("DOMContentLoaded", () => {
       dataRegistro: new Date().toLocaleString()
     };
 
-    // Salva no localStorage
     usuarios.push(novoUsuario);
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
-
     exibirMensagem("Cadastro realizado com sucesso!", true);
 
-    // Redireciona após 2s
     setTimeout(() => {
       window.location.href = "login.html";
     }, 2000);
   });
 
-  // Funções auxiliares
   function exibirMensagem(msg, sucesso) {
     msgDiv.innerHTML = msg;
     msgDiv.className = "mensagens " + (sucesso ? "sucesso" : "erro");
+    msgDiv.style.textAlign = "center";
   }
 
   function validarEmail(email) {
@@ -80,6 +85,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function validarCPF(cpf) {
-    return /^\d{11}$/.test(cpf.replace(/[^\d]/g, ""));
+    const apenasNumeros = cpf.replace(/\D/g, "");
+    return apenasNumeros.length === 11;
+  }
+
+  function validarSenha(senha) {
+    return senha.length >= 6;
   }
 });

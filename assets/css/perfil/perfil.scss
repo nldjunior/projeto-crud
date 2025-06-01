@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+$cor-primaria: #3562D7;
+$cor-link: #3462D8;
+$cor-bg: #faf9f9;
+$cor-white: #FFFFFE;
+$cor-borda: rgba(165, 165, 165, 0.473);
+$fonte-principal: 'Noto Sans', sans-serif;
+$tamanho-fonte-label: 22px;
+$tamanho-fonte-input: 16px;
+$tamanho-fonte-botao: 20px;
+
+@mixin input-estilizado {
+  width: 70%;
+  height: 40px;
+  border: 1px solid $cor-borda;
+  border-radius: 15px;
+  font-size: $tamanho-fonte-input;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: $fonte-principal;
+
+  &:focus {
+    outline: none;
+    border-color: $cor-borda;
+    box-shadow: none;
+  }
+}
+
+@mixin botao-padrao {
+  width: 180px;
+  height: 50px;
+  font-size: $tamanho-fonte-botao;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $cor-primaria;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  font-family: $fonte-principal;
+}
+
+body {
+  margin: 0;
+  font-family: $fonte-principal;
+
+  .container {
+    background-color: $cor-bg;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container-perfil {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background-color: $cor-white;
+      box-shadow: 0px 0px 3px rgba(156, 156, 156, 0.342);
+      border-radius: 15px;
+      height: 70%;
+      width: 25%;
+
+      .container-perfil-titulo { 
+        font-size: 40px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+      }
+
+
+      .container-conteudo  {
+        width: 80%;
+        height: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+
+        .container-nome, .container-email, .container-cpf, .container-senha { 
+            width: 100%;
+            display: flex;
+            margin: 0;
+            align-items: end;
+            height: 50px;
+
+
+            h3 { 
+                margin: 0;
+                font-size: 25px;
+                
+            }
+
+            p { 
+                margin: 0;
+                font-size: 20px;
+            }
+        }
+      }
+
+      button { 
+        @include botao-padrao();
+        margin-bottom: 10px;
+      }
+
+    }
+  }
+}
