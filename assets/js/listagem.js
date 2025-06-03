@@ -1,15 +1,15 @@
-// Função para obter os usuários do localStorage
+// pega os usuários do localStorage ou retorna array vazio
 function obterUsuarios() {
   const usuariosJSON = localStorage.getItem("usuarios");
   return usuariosJSON ? JSON.parse(usuariosJSON) : [];
 }
 
-// Função para salvar os usuários no localStorage
+// salva os usuários no localStorage
 function salvarUsuarios(usuarios) {
   localStorage.setItem("usuarios", JSON.stringify(usuarios));
 }
 
-// Função para criar a linha de usuário com botões dentro da mesma linha
+// cria uma linha com os dados do usuário e botões de ação
 function criarLinha(usuario, index) {
   const linha = document.createElement("div");
   linha.classList.add("linha");
@@ -29,21 +29,21 @@ function criarLinha(usuario, index) {
   return linha;
 }
 
-// Função para listar todos os usuários
+// lista todos os usuários na tela limpando antes
 function listarUsuarios(usuarios) {
   const dadosContas = document.querySelector(".dados-contas");
-  dadosContas.innerHTML = ""; // Limpa antes de listar
+  dadosContas.innerHTML = ""; // limpa antes de mostrar
 
   usuarios.forEach((usuario, index) => {
     const linha = criarLinha(usuario, index);
     dadosContas.appendChild(linha);
   });
 
-  // Depois que as linhas foram criadas, adiciona eventos aos botões
+  // depois que cria as linhas, ativa os eventos dos botões
   ativarEventosBotoes();
 }
 
-// Função para ativar os eventos dos botões editar e excluir
+// adiciona os eventos de click para editar e excluir nos botões
 function ativarEventosBotoes() {
   const botoesEditar = document.querySelectorAll(".btn-editar");
   const botoesExcluir = document.querySelectorAll(".btn-excluir");
@@ -63,7 +63,7 @@ function ativarEventosBotoes() {
   });
 }
 
-// Função para excluir usuário
+// exclui usuário depois de confirmar e atualiza a lista
 function excluirUsuario(index) {
   const usuarios = obterUsuarios();
   if (confirm(`Deseja realmente excluir o usuário "${usuarios[index].nome}"?`)) {
@@ -73,13 +73,13 @@ function excluirUsuario(index) {
   }
 }
 
-// Função para editar usuário (exemplo básico com prompt)
+// edita usuário com prompts simples, atualiza e lista de novo
 function editarUsuario(index) {
   const usuarios = obterUsuarios();
   const usuario = usuarios[index];
 
   const novoNome = prompt("Editar nome:", usuario.nome);
-  if (novoNome === null) return; // Cancelou
+  if (novoNome === null) return; // se cancelar sai
   const novoEmail = prompt("Editar email:", usuario.email);
   if (novoEmail === null) return;
   const novoCpf = prompt("Editar CPF:", usuario.cpf);
@@ -96,17 +96,36 @@ function editarUsuario(index) {
   listarUsuarios(usuarios);
 }
 
-// Função para pesquisar usuários por nome ou email
 function pesquisarUsuarios() {
-  const input = document.getElementById("inputPesquisa").value.toLowerCase();
+  const inputRaw = document.getElementById("inputPesquisa").value.trim().toLowerCase();
+
+  // função para limpar CPF (remover tudo que não é número)
+  const limparCpf = (cpf) => cpf.replace(/\D/g, "");
+
+  // limpa o input para buscar também no CPF sem formatação
+  const inputCpf = limparCpf(inputRaw);
+
   const usuarios = obterUsuarios();
-  const filtrados = usuarios.filter(u =>
-    u.nome.toLowerCase().includes(input) || u.email.toLowerCase().includes(input)
-  );
+
+  const filtrados = usuarios.filter(u => {
+    const nome = u.nome.toLowerCase();
+    const email = u.email.toLowerCase();
+    const cpf = limparCpf(u.cpf);
+
+    // verifica se inputRaw está em nome ou email
+    const buscaNomeEmail = nome.includes(inputRaw) || email.includes(inputRaw);
+
+    // se inputCpf for vazio, ignora a busca por CPF
+    const buscaCpf = inputCpf ? cpf.includes(inputCpf) : false;
+
+    // retorna true se encontrar em nome/email ou em cpf
+    return buscaNomeEmail || buscaCpf;
+  });
+
   listarUsuarios(filtrados);
 }
 
-// Função para listar todos ao carregar ou clicar em listar
+// inicializa a listagem e adiciona eventos nos botões de pesquisar e listar tudo
 function inicializar() {
   const usuarios = obterUsuarios();
   listarUsuarios(usuarios);
@@ -118,5 +137,5 @@ function inicializar() {
   });
 }
 
-// Inicializa a listagem ao carregar a página
+// inicia tudo quando a página carregar
 window.addEventListener("DOMContentLoaded", inicializar);

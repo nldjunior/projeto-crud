@@ -1,67 +1,75 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap");
+.container .container-perfil button, .container .container-perfil .container-conteudo, .container .container-perfil, .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .container-perfil {
+  background-color: #FFFFFE;
+  box-shadow: 0 0 3px rgba(156, 156, 156, 0.342);
+  border-radius: 15px;
+}
+
 body {
   margin: 0;
   font-family: "Noto Sans", sans-serif;
 }
-body .container {
-  background-color: #faf9f9;
+
+.container {
+  background-color: #FAF9F9;
   height: 100dvh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
-body .container .container-perfil {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.container .container-perfil {
   flex-direction: column;
-  background-color: #FFFFFE;
-  box-shadow: 0px 0px 3px rgba(156, 156, 156, 0.342);
-  border-radius: 15px;
   height: 70%;
   width: 25%;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
-body .container .container-perfil .container-perfil-titulo {
+.container .container-perfil-titulo {
   font-size: 40px;
-  margin-bottom: 0px;
-  margin-top: 0px;
+  margin: 0 0;
 }
-body .container .container-perfil .container-conteudo {
+.container .container-perfil .container-conteudo {
   width: 80%;
   height: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   gap: 10px;
 }
-body .container .container-perfil .container-conteudo .container-nome, body .container .container-perfil .container-conteudo .container-email, body .container .container-perfil .container-conteudo .container-cpf, body .container .container-perfil .container-conteudo .container-senha {
+.container .container-perfil .container-conteudo .container-nome,
+.container .container-perfil .container-conteudo .container-email,
+.container .container-perfil .container-conteudo .container-cpf,
+.container .container-perfil .container-conteudo .container-senha {
   width: 100%;
   display: flex;
   margin: 0;
-  align-items: end;
+  align-items: flex-end;
   height: 50px;
 }
-body .container .container-perfil .container-conteudo .container-nome h3, body .container .container-perfil .container-conteudo .container-email h3, body .container .container-perfil .container-conteudo .container-cpf h3, body .container .container-perfil .container-conteudo .container-senha h3 {
+.container .container-perfil .container-conteudo .container-nome h3,
+.container .container-perfil .container-conteudo .container-email h3,
+.container .container-perfil .container-conteudo .container-cpf h3,
+.container .container-perfil .container-conteudo .container-senha h3 {
   margin: 0;
   font-size: 25px;
 }
-body .container .container-perfil .container-conteudo .container-nome p, body .container .container-perfil .container-conteudo .container-email p, body .container .container-perfil .container-conteudo .container-cpf p, body .container .container-perfil .container-conteudo .container-senha p {
+.container .container-perfil .container-conteudo .container-nome p,
+.container .container-perfil .container-conteudo .container-email p,
+.container .container-perfil .container-conteudo .container-cpf p,
+.container .container-perfil .container-conteudo .container-senha p {
   margin: 0;
   font-size: 20px;
 }
-body .container .container-perfil button {
+.container .container-perfil button {
   width: 180px;
   height: 50px;
   font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #3562D7;
-  color: white;
-  border-radius: 8px;
+  color: #FFFFFE;
   border: none;
+  border-radius: 8px;
   font-family: "Noto Sans", sans-serif;
   margin-bottom: 10px;
 }/*# sourceMappingURL=perfil.css.map */

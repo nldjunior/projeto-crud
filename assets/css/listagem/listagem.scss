@@ -1,225 +1,210 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap');
 
-$cor-primaria: #3562D7;
-$cor-link: #3462D8;
-$cor-bg: #faf9f9;
-$cor-white: #FFFFFE;
-$cor-borda: rgba(165, 165, 165, 0.473);
-$fonte-principal: 'Noto Sans', sans-serif;
-$tamanho-fonte-label: 22px;
-$tamanho-fonte-input: 16px;
-$tamanho-fonte-botao: 20px;
+// Variáveis --------------------------------------------------
+$colors: (
+  primary: #3562D7,
+  link: #3462D8,
+  bg: #FAF9F9,
+  white: #FFFFFE,
+  border: rgba(165, 165, 165, 0.473)
+);
 
-@mixin input-estilizado {
+$font-main: 'Noto Sans', sans-serif;
+
+$font-size: (
+  label: 22px,
+  input: 16px,
+  button: 20px
+);
+
+// Placeholders --------------------------------------------------
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%card {
+  background-color: map-get($colors, white);
+  box-shadow: 0 0 3px rgba(156, 156, 156, 0.342);
+  border-radius: 15px;
+}
+
+// Mixins --------------------------------------------------
+@mixin input {
   width: 70%;
   height: 40px;
-  border: 1px solid $cor-borda;
+  padding: 0 15px;
+  font-size: map-get($font-size, input);
+  font-family: $font-main;
+  border: 1px solid map-get($colors, border);
   border-radius: 15px;
-  font-size: $tamanho-fonte-input;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-family: $fonte-principal;
 
   &:focus {
     outline: none;
-    border-color: $cor-borda;
     box-shadow: none;
+    border-color: map-get($colors, border);
   }
 }
 
-@mixin botao-padrao {
-  width: 180px;
-  height: 50px;
-  font-size: $tamanho-fonte-botao;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: $cor-primaria;
-  color: white;
-  border-radius: 8px;
+@mixin button($w: 180px, $h: 50px) {
+  @extend %flex-center;
+  width: $w;
+  height: $h;
+  font-size: map-get($font-size, button);
+  background-color: map-get($colors, primary);
+  color: map-get($colors, white);
   border: none;
-  font-family: $fonte-principal;
+  border-radius: 8px;
+  font-family: $font-main;
 }
 
+// Base --------------------------------------------------
 body {
-  margin: 0;
-  font-family: $fonte-principal;
 
-  .container {
-    background-color: $cor-bg;
-    height: 100dvh;
+
+  .acoes {
     display: flex;
+    gap: 5px;
     justify-content: center;
     align-items: center;
+    height: 100%
+  }
+
+  .btn-editar, .btn-excluir {
+    background-color: map-get($colors, primary);
+    border: none;
+    width: 50px;
+    height: 30px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+  }
+
+  margin: 0;
+  font-family: $font-main;
+
+  .container {
+    background-color: map-get($colors, bg);
+    height: 100dvh;
+    @extend %flex-center;
 
     .container-listagem {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @extend %card;
+      @extend %flex-center;
       flex-direction: column;
-      background-color: $cor-white;
-      box-shadow: 0px 0px 3px rgba(156, 156, 156, 0.342);
-      border-radius: 15px;
-      
       height: 80%;
       width: 50%;
 
-      .container-listagem-titulo { 
+      &-titulo {
         margin: 0;
         font-size: 40px;
       }
 
-      .container-lista { 
+      .container-lista {
         width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @extend %flex-center;
         flex-direction: column;
         margin-bottom: 40px;
 
-        .container-pesquisa { 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50%;
-            margin-bottom: 20px;
-            padding: 10px;
+        .container-pesquisa {
+          @extend %flex-center;
+          width: 50%;
+          margin-bottom: 20px;
+          padding: 10px;
 
-            button { 
-                width: 100px;
-                height: 40px;
-                font-size: 15px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: $cor-primaria;
-                color: white;
-                border-radius: 5px;
-                border: none;
-                font-family: $fonte-principal;
-                margin-left: 20px;
-                }
+          input {
+            @include input();
+          }
 
-            input { 
-                @include input-estilizado()
-            }
-      }
-
-      .container-contas { 
-        width: 91%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        padding: 10px;
-
-        .container-titulos { 
-            
-            border-radius: 20px;
-            padding: 10px;
-            border: 2px solid #3562D7;
-            display: flex;
-            gap: 60px;
-            width: 90%;
-            margin-bottom: 10px;
-            align-items: center;
-            justify-content: center;
-
-            
-
-            .nome-container, .email-container, .cpf-container, .senha-container, .data-container { 
-                width: 20%;
-                
-                text-align: center;
-            }
-
-            h3 {
-                margin: 0; 
-                
-            }
-
+          button {
+            @include button(100px, 40px);
+            font-size: 15px;
+            margin-left: 20px;
+          }
         }
 
-        .dados-contas { 
-            width:100%;
-            margin: 0;
+        .container-contas {
+          width: 91%;
+          @extend %flex-center;
+          flex-direction: column;
+          padding: 10px;
+
+          .container-titulos {
+            @extend %flex-center;
+            border: 2px solid map-get($colors, primary);
+            border-radius: 20px;
+            padding: 10px;
+            width: 90%;
+            margin-bottom: 10px;
+            gap: 60px;
+
+            h3 {
+              margin: 0;
+            }
+
+            .nome-container,
+            .email-container,
+            .cpf-container,
+            .senha-container,
+            .data-container {
+              width: 20%;
+              text-align: center;
+            }
+          }
+
+          .dados-contas {
+            width: 100%;
             height: 400px;
+            margin: 0;
             display: flex;
             flex-direction: column;
-            justify-content: start;
+            justify-content: flex-start;
             align-items: center;
             overflow: hidden;
 
-            .linha { 
-                display: flex;
-                justify-content: center;
-                align-items: start;
-                height: 20%;
-                width: 100%;
-            }
-
-
-            
-            .acoes {
+            .linha {
               display: flex;
-              gap: 5px;
               justify-content: center;
-              align-items: center;
-              height: 100%;
-
-
-              button { 
-                background-color: $cor-primaria;
-                border: none;
-                width: 50px;
-                height: 30px;
-                border-radius: 5px;
-                color: white;
-              }
-             
+              align-items: flex-start;
+              height: 20%;
+              width: 100%;
             }
 
             .acoes-container {
               width: auto;
             }
 
+            .nomes,
+            .email,
+            .cpf,
+            .senha,
+            .data {
+              height: 100%;
+              width: 20%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 10px;
 
-            .nomes, .email, .cpf, .senha, .data { 
+              .listagem-nomes {
+                max-width: 100%;
+                text-align: center;
+                margin: 0;
+                white-space: normal;
+                word-break: break-word;
+                overflow-wrap: break-word;
+              }
+
+              .conta {
+                max-width: 100%;
                 height: 100%;
-                width: 20%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 10px;
-
-                .listagem-nomes { 
-                    max-width: 100%;
-                    text-align: center;
-                    margin: 0;
-                    white-space: normal;
-                    word-break: break-word;
-                    overflow-wrap: break-word;
-                }
-
-
-                .conta { 
-                    max-width: 100%;
-                    height: 100%;
-                }
+              }
             }
+          }
         }
-
-    
-
-
       }
-
-      }
-
-      
-
-      
-        }
     }
+  }
 }

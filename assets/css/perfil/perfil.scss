@@ -1,111 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap');
 
-$cor-primaria: #3562D7;
-$cor-link: #3462D8;
-$cor-bg: #faf9f9;
-$cor-white: #FFFFFE;
-$cor-borda: rgba(165, 165, 165, 0.473);
-$fonte-principal: 'Noto Sans', sans-serif;
-$tamanho-fonte-label: 22px;
-$tamanho-fonte-input: 16px;
-$tamanho-fonte-botao: 20px;
+// variaveis --------------------------------------------------
+$colors: (
+  primary: #3562D7,
+  bg: #FAF9F9,
+  white: #FFFFFE,
+  border: rgba(165, 165, 165, 0.473)
+);
 
-@mixin input-estilizado {
-  width: 70%;
-  height: 40px;
-  border: 1px solid $cor-borda;
-  border-radius: 15px;
-  font-size: $tamanho-fonte-input;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-family: $fonte-principal;
+$font-main: 'Noto Sans', sans-serif;
 
-  &:focus {
-    outline: none;
-    border-color: $cor-borda;
-    box-shadow: none;
-  }
-}
+$font-size: (
+  input: 16px,
+  button: 20px
+);
 
-@mixin botao-padrao {
-  width: 180px;
-  height: 50px;
-  font-size: $tamanho-fonte-botao;
+// placeholders --------------------------------------------------
+%flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $cor-primaria;
-  color: white;
-  border-radius: 8px;
-  border: none;
-  font-family: $fonte-principal;
 }
 
+%card {
+  background-color: map-get($colors, white);
+  box-shadow: 0 0 3px rgba(156, 156, 156, .342);
+  border-radius: 15px;
+}
+
+// mixins --------------------------------------------------
+@mixin button($w: 180px, $h: 50px) {
+  @extend %flex-center;
+  width: $w;
+  height: $h;
+  font-size: map-get($font-size, button);
+  background-color: map-get($colors, primary);
+  color: map-get($colors, white);
+  border: none;
+  border-radius: 8px;
+  font-family: $font-main;
+}
+
+// base --------------------------------------------------
 body {
   margin: 0;
-  font-family: $fonte-principal;
+  font-family: $font-main;
+}
 
-  .container {
-    background-color: $cor-bg;
-    height: 100dvh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container {
+  background-color: map-get($colors, bg);
+  height: 100dvh;
+  @extend %flex-center;
 
-    .container-perfil {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  .container-perfil {
+    @extend %card;
+    @extend %flex-center;
+    flex-direction: column;
+    height: 70%;
+    width: 25%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    &-titulo {
+      font-size: 40px;
+      margin: 0 0;
+    }
+
+    .container-conteudo {
+      width: 80%;
+      height: 60%;
+      @extend %flex-center;
       flex-direction: column;
-      background-color: $cor-white;
-      box-shadow: 0px 0px 3px rgba(156, 156, 156, 0.342);
-      border-radius: 15px;
-      height: 70%;
-      width: 25%;
+      gap: 10px;
 
-      .container-perfil-titulo { 
-        font-size: 40px;
-        margin-bottom: 0px;
-        margin-top: 0px;
-      }
-
-
-      .container-conteudo  {
-        width: 80%;
-        height: 60%;
+      .container-nome,
+      .container-email,
+      .container-cpf,
+      .container-senha {
+        width: 100%;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 10px;
+        margin: 0;
+        align-items: flex-end;
+        height: 50px;
 
-        .container-nome, .container-email, .container-cpf, .container-senha { 
-            width: 100%;
-            display: flex;
-            margin: 0;
-            align-items: end;
-            height: 50px;
+        h3 {
+          margin: 0;
+          font-size: 25px;
+        }
 
-
-            h3 { 
-                margin: 0;
-                font-size: 25px;
-                
-            }
-
-            p { 
-                margin: 0;
-                font-size: 20px;
-            }
+        p {
+          margin: 0;
+          font-size: 20px;
         }
       }
+    }
 
-      button { 
-        @include botao-padrao();
-        margin-bottom: 10px;
-      }
-
+    button {
+      @include button();
+      margin-bottom: 10px;
     }
   }
 }

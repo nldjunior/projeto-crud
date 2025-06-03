@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
   // seleciona o formulario com a classe 'container-input'
   const form = document.querySelector(".container-input");
   const cpfInput = form.cpf;
@@ -14,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let valor = e.target.value.replace(/\D/g, "");
     // maximo 11 digitos
     if (valor.length > 11) valor = valor.slice(0, 11);
-    // Aplica a formatação padrão do CPF: XXX.XXX.XXX-XX
+    // aplica a formatação padrao do CPF: XXX.XXX.XXX-XX
     valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
     valor = valor.replace(/(\d{3})(\d)/, "$1.$2");
     valor = valor.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
@@ -102,8 +103,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // valida email com regex simples
   function validarEmail(email) {
-    const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    return regex.test(email);
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return regex.test(email);
   }
 
   // confere se o cpf tem só números e 11 dígitos
